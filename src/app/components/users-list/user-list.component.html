@@ -1,0 +1,121 @@
+<!-- <div class="max-w-6xl mx-auto">
+      <h2 class="text-2xl font-bold text-center mb-6">All Users</h2>
+      
+      <div *ngIf="loading" class="text-center">
+        <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+        <p class="mt-2">Loading users...</p>
+      </div>
+
+      <div *ngIf="errorMessage" class="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+        {{ errorMessage }}
+      </div>
+
+      <div *ngIf="!loading && users.length === 0" class="text-center text-gray-500">
+        No users found.
+      </div>
+
+      <div *ngIf="!loading && users.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div *ngFor="let user of users" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
+              {{ user.name.charAt(0).toUpperCase() }}
+            </div>
+            <div class="ml-3">
+              <h3 class="text-lg font-semibold text-gray-800">{{ user.name }}</h3>
+              <p class="text-gray-600">&#64;{{ user.username }}</p>
+            </div>
+          </div>
+
+          <div class="space-y-2 text-sm text-gray-600">
+            <div class="flex items-center">
+              <span class="font-medium w-20">Email:</span>
+              <span>{{ user.email }}</span>
+            </div>
+            
+            <div class="flex items-center" *ngIf="user.age">
+              <span class="font-medium w-20">Age:</span>
+              <span>{{ user.age }}</span>
+            </div>
+            
+            <div class="flex items-center" *ngIf="user.country">
+              <span class="font-medium w-20">Country:</span>
+              <span>{{ user.country }}</span>
+            </div>
+            
+            <div class="flex items-center" *ngIf="user.gender">
+              <span class="font-medium w-20">Gender:</span>
+              <span>{{ user.gender }}</span>
+            </div>
+            
+            <div class="flex items-center" *ngIf="user.mobileNumber">
+              <span class="font-medium w-20">Mobile:</span>
+              <span>{{ user.mobileNumber }}</span>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-4 border-t border-gray-200">
+            <p class="text-xs text-gray-500">
+              Joined {{ user.createdAt | date:'shortDate' }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+<div class="all-users-container">
+  <h2 class="all-users-header">All Users</h2>
+
+  <div *ngIf="loading" class="loading-container">
+    <div class="spinner"></div>
+    <p class="loading-text">Loading users...</p>
+  </div>
+
+  <div *ngIf="errorMessage" class="alert alert-error">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="!loading && users.length === 0" class="no-users-text">
+    No users found.
+  </div>
+
+  <div *ngIf="!loading && users.length > 0" class="user-grid">
+    <div *ngFor="let user of users" class="user-card">
+      <div class="user-header">
+        <div class="avatar">
+          {{ user.name.charAt(0).toUpperCase() }}
+        </div>
+        <div class="user-info">
+          <h3>{{ user.name }}</h3>
+          <p>{{ user.username }}</p>
+        </div>
+      </div>
+
+      <div class="user-details">
+        <div class="detail-row">
+          <span class="label">Email:</span>
+          <span>{{ user.email }}</span>
+        </div>
+        <div class="detail-row" *ngIf="user.age">
+          <span class="label">Age:</span>
+          <span>{{ user.age }}</span>
+        </div>
+        <div class="detail-row" *ngIf="user.country">
+          <span class="label">Country:</span>
+          <span>{{ user.country }}</span>
+        </div>
+        <div class="detail-row" *ngIf="user.gender">
+          <span class="label">Gender:</span>
+          <span>{{ user.gender }}</span>
+        </div>
+        <div class="detail-row" *ngIf="user.mobileNumber">
+          <span class="label">Mobile:</span>
+          <span>{{ user.mobileNumber }}</span>
+        </div>
+      </div>
+
+      <div class="user-footer">
+        <p>Joined {{ user.createdAt | date:'shortDate' }}</p>
+      </div>
+    </div>
+  </div>
+</div>

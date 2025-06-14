@@ -1,12 +1,22 @@
+// app.component.ts
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet, RouterModule } from '@angular/router';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [CommonModule, RouterOutlet, RouterModule, NavbarComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styles: [`
+    :host {
+      display: block;
+      min-height: 100vh;
+      background-color: #f8fafc;
+    }
+  `]
 })
 export class AppComponent {
-  title = 'authApp';
+  title = 'user-management-app';
 }

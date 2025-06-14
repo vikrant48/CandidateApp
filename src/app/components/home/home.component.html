@@ -1,0 +1,102 @@
+<!-- <div class="text-center">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl font-bold text-gray-800 mb-6">
+          Welcome to User Management System
+        </h1>
+        
+        <p class="text-xl text-gray-600 mb-8">
+          A modern Angular application for user authentication and profile management
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="text-blue-500 text-3xl mb-4">👤</div>
+            <h3 class="text-lg font-semibold mb-2">User Registration</h3>
+            <p class="text-gray-600">Create your account with comprehensive profile information</p>
+          </div>
+          
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="text-green-500 text-3xl mb-4">🔐</div>
+            <h3 class="text-lg font-semibold mb-2">Secure Authentication</h3>
+            <p class="text-gray-600">JWT-based authentication with role-based access control</p>
+          </div>
+          
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <div class="text-purple-500 text-3xl mb-4">📊</div>
+            <h3 class="text-lg font-semibold mb-2">Profile Management</h3>
+            <p class="text-gray-600">Update and manage your personal information easily</p>
+          </div>
+        </div>
+
+        <div *ngIf="!(authService.currentUser$ | async); else userActions" class="space-x-4">
+          <a routerLink="/register" 
+             class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors inline-block">
+            Get Started
+          </a>
+          <a routerLink="/login" 
+             class="bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition-colors inline-block">
+            Sign In
+          </a>
+        </div>
+
+        <ng-template #userActions>
+          <div class="space-x-4">
+            <a routerLink="/profile" 
+               class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors inline-block">
+              View Profile
+            </a>
+            <a routerLink="/users" 
+               class="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition-colors inline-block">
+              Browse Users
+            </a>
+          </div>
+        </ng-template>
+    </div>
+</div> -->
+
+<div class="container">
+  <div class="content">
+    <h1 class="heading">
+      Welcome to User Management System
+    </h1>
+
+    <p class="subheading">
+      A modern Angular application for user authentication and profile management
+    </p>
+
+    <div class="features">
+      <div class="feature-box">
+        <div class="icon blue">👤</div>
+        <h3 class="feature-title">User Registration</h3>
+        <p class="feature-text">Create your account with comprehensive profile information</p>
+      </div>
+
+      <div class="feature-box">
+        <div class="icon green">🔐</div>
+        <h3 class="feature-title">Secure Authentication</h3>
+        <p class="feature-text">JWT-based authentication with role-based access control</p>
+      </div>
+
+      <div class="feature-box">
+        <div class="icon purple">📊</div>
+        <h3 class="feature-title">Profile Management</h3>
+        <p class="feature-text">Update and manage your personal information easily</p>
+      </div>
+    </div>
+
+    <div *ngIf="!(authService.currentUser$ | async); else userActions" class="action-buttons">
+      <a routerLink="/register" class="btn btn-blue">Get Started</a>
+      <a routerLink="/login" class="btn btn-gray">Sign In</a>
+    </div>
+
+    <ng-template #userActions>
+      <div class="action-buttons">
+        <a routerLink="/profile" class="btn btn-blue">View Profile</a>
+        <a routerLink="/users" class="btn btn-green">Browse Users</a>
+      </div>
+    </ng-template>
+  </div>
+</div>
+
+
+ 

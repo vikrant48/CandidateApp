@@ -51,6 +51,7 @@ export interface UserResponse {
   username: string;
   name: string;
   email: string;
+  password: string;
   age?: number;
   mobileNumber?: string;
   country?: string;

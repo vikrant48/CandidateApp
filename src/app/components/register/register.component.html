@@ -1,139 +1,4 @@
-<!-- <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6">
-      <h2 class="text-2xl font-bold text-center mb-6">Register</h2>
-      
-      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2">
-              Username *
-            </label>
-            <input 
-              type="text" 
-              formControlName="username"
-              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              [class.border-red-500]="registerForm.get('username')?.invalid && registerForm.get('username')?.touched">
-            <div *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched" 
-                 class="text-red-500 text-sm mt-1">
-              Username is required (max 50 characters)
-            </div>
-          </div>
-
-          <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2">
-              Full Name *
-            </label>
-            <input 
-              type="text" 
-              formControlName="name"
-              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              [class.border-red-500]="registerForm.get('name')?.invalid && registerForm.get('name')?.touched">
-            <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched" 
-                 class="text-red-500 text-sm mt-1">
-              Name is required (max 100 characters)
-            </div>
-          </div>
-
-          <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2">
-              Email *
-            </label>
-            <input 
-              type="email" 
-              formControlName="email"
-              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              [class.border-red-500]="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
-            <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" 
-                 class="text-red-500 text-sm mt-1">
-              Valid email is required
-            </div>
-          </div>
-
-          <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2">
-              Password *
-            </label>
-            <input 
-              type="password" 
-              formControlName="password"
-              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              [class.border-red-500]="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
-            <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" 
-                 class="text-red-500 text-sm mt-1">
-              Password is required (min 6 characters)
-            </div>
-          </div>
-
-          <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2">
-              Age
-            </label>
-            <input 
-              type="number" 
-              formControlName="age"
-              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-          </div>
-
-          <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2">
-              Mobile Number
-            </label>
-            <input 
-              type="tel" 
-              formControlName="mobileNumber"
-              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-          </div>
-
-          <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2">
-              Country
-            </label>
-            <input 
-              type="text" 
-              formControlName="country"
-              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-          </div>
-
-          <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2">
-              Gender
-            </label>
-            <select 
-              formControlName="gender"
-              class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-              <option value="">Select Gender</option>
-              <option value="MALE">Male</option>
-              <option value="FEMALE">Female</option>
-              <option value="OTHER">Other</option>
-            </select>
-          </div>
-        </div>
-
-        <div *ngIf="errorMessage" class="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
-          {{ errorMessage }}
-        </div>
-
-        <div *ngIf="successMessage" class="mb-4 p-3 bg-green-100 border border-green-400 text-green-700 rounded">
-          {{ successMessage }}
-        </div>
-
-        <button 
-          type="submit" 
-          [disabled]="registerForm.invalid || loading"
-          class="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors">
-          <span *ngIf="loading" class="inline-block animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></span>
-          {{ loading ? 'Registering...' : 'Register' }}
-        </button>
-      </form>
-
-      <div class="mt-6 text-center">
-        <p class="text-gray-600">
-          Already have an account? 
-          <a routerLink="/login" class="text-blue-500 hover:text-blue-700 font-medium">Login here</a>
-        </p>
-      </div>
-    </div> -->
-
-<div class="register-container">
+<!-- <div class="register-container">
   <h2 class="register-heading">Register</h2>
 
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
@@ -211,4 +76,107 @@
       <a routerLink="/login">Login here</a>
     </p>
   </div>
+</div> -->
+
+<div class="register-container">
+  <h2 class="register-heading">Register</h2>
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-grid">
+      <ng-container *ngFor="let field of fieldConfig">
+        <div class="form-group" *ngIf="field.visible" [ngSwitch]="field.type">
+          <label *ngIf="field.label">
+            {{ field.label }} <span *ngIf="field.required">*</span>
+          </label>
+
+          <input
+            *ngSwitchCase="'text'"
+            [type]="field.type"
+            [formControlName]="field.key"
+            [attr.disabled]="!field.editable ? true : null"
+            [class.invalid]="registerForm.get(field.key)?.invalid && registerForm.get(field.key)?.touched"
+          />
+
+          <input
+            *ngSwitchCase="'email'"
+            type="email"
+            [formControlName]="field.key"
+            [attr.disabled]="!field.editable ? true : null"
+            [class.invalid]="registerForm.get(field.key)?.invalid && registerForm.get(field.key)?.touched"
+          />
+
+          <input
+            *ngSwitchCase="'password'"
+            type="password"
+            [formControlName]="field.key"
+            [attr.disabled]="!field.editable ? true : null"
+            [class.invalid]="registerForm.get(field.key)?.invalid && registerForm.get(field.key)?.touched"
+          />
+
+          <select
+            *ngSwitchCase="'select_role'"
+            [formControlName]="field.key"
+            [attr.disabled]="!field.editable ? true : null"
+            [class.invalid]="registerForm.get(field.key)?.invalid && registerForm.get(field.key)?.touched"
+          >
+            <option value="">Select Role</option>
+            <option value="ADMIN">Admin</option>
+            <option value="USER">User</option>
+          </select>
+
+          <input
+            *ngSwitchCase="'number'"
+            type="number"
+            [formControlName]="field.key"
+            [attr.disabled]="!field.editable ? true : null"
+            [class.invalid]="registerForm.get(field.key)?.invalid && registerForm.get(field.key)?.touched"
+          />
+
+          <input
+            *ngSwitchCase="'tel'"
+            type="tel"
+            [formControlName]="field.key"
+            [attr.disabled]="!field.editable ? true : null"
+            [class.invalid]="registerForm.get(field.key)?.invalid && registerForm.get(field.key)?.touched"
+          />
+
+          <select
+            *ngSwitchCase="'select_gender'"
+            [formControlName]="field.key"
+            [attr.disabled]="!field.editable ? true : null"
+            [class.invalid]="registerForm.get(field.key)?.invalid && registerForm.get(field.key)?.touched"
+          >
+            <option value="">Select Gender</option>
+            <option value="MALE">Male</option>
+            <option value="FEMALE">Female</option>
+            <option value="OTHER">Other</option>
+          </select>
+
+          <div *ngIf="registerForm.get(field.key)?.invalid && registerForm.get(field.key)?.touched" class="error-msg">
+            {{ field.label }} is invalid or required.
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <div *ngIf="errorMessage" class="alert error">{{ errorMessage }}</div>
+    <div *ngIf="successMessage" class="alert success">{{ successMessage }}</div>
+
+    <button type="submit" [disabled]="registerForm.invalid || loading" class="submit-button">
+      <span *ngIf="loading" class="spinner"></span>
+      {{ loading ? 'Registering...' : 'Register' }}
+    </button>
+  </form>
+
+  <div class="form-footer">
+    <p>
+      Already have an account?
+      <a routerLink="/login">Login here</a>
+    </p>
+  </div>
 </div>
+
+
+
+
+

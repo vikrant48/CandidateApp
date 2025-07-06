@@ -1,4 +1,3 @@
-// app.component.ts
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet, RouterModule } from '@angular/router';
@@ -9,14 +8,11 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   standalone: true,
   imports: [CommonModule, RouterOutlet, RouterModule, NavbarComponent],
   templateUrl: './app.component.html',
-  styles: [`
-    :host {
-      display: block;
-      min-height: 100vh;
-      background-color: #f8fafc;
-    }
-  `]
+  styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'user-management-app';
+  ngOnInit() {
+    console.log("AppComponent loaded");
+  }
 }

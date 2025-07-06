@@ -1,16 +1,21 @@
-// models/user.model.ts
 export interface User {
   id?: number;
   username: string;
   name: string;
   email: string;
   password?: string;
+  role: Role;
   age?: number;
   mobileNumber?: string;
   country?: string;
   gender?: Gender;
   createdAt?: Date;
   updatedAt?: Date;
+}
+
+export enum Role {
+  ADMIN = 'ADMIN',
+  USER = 'USER'
 }
 
 export enum Gender {
@@ -29,6 +34,7 @@ export interface SignupRequest {
   name: string;
   email: string;
   password: string;
+  role: Role;
   age?: number;
   mobileNumber?: string;
   country?: string;
@@ -52,6 +58,7 @@ export interface UserResponse {
   name: string;
   email: string;
   password: string;
+  role: Role;
   age?: number;
   mobileNumber?: string;
   country?: string;

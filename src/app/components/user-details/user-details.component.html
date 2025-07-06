@@ -1,0 +1,89 @@
+<div class="user-details-container">
+  <h2 class="form-heading">
+    {{ isEditing ? 'Edit Your Details' : 'Fill Your Details' }}
+  </h2>
+
+  <form [formGroup]="userDetailsForm" (ngSubmit)="onSubmit()">
+    <div class="form-grid">
+      <ng-container *ngFor="let field of fieldConfig">
+        <div
+          class="form-group"
+          *ngIf="field.visible"
+          [ngSwitch]="field.type"
+        >
+          <label *ngIf="field.label">
+            {{ field.label }} <span *ngIf="field.required">*</span>
+          </label>
+
+          <!-- Text Input -->
+          <input
+            *ngSwitchCase="'text'"
+            type="text"
+            [formControlName]="field.key"
+            [attr.disabled]="!field.editable ? true : null"
+            [class.invalid]="userDetailsForm.get(field.key)?.invalid && userDetailsForm.get(field.key)?.touched"
+          />
+
+          <!-- Email Input -->
+          <input
+            *ngSwitchCase="'email'"
+            type="email"
+            [formControlName]="field.key"
+            [attr.disabled]="!field.editable ? true : null"
+            [class.invalid]="userDetailsForm.get(field.key)?.invalid && userDetailsForm.get(field.key)?.touched"
+          />
+
+          <!-- Telephone Input -->
+          <input
+            *ngSwitchCase="'tel'"
+            type="tel"
+            [formControlName]="field.key"
+            [attr.disabled]="!field.editable ? true : null"
+            [class.invalid]="userDetailsForm.get(field.key)?.invalid && userDetailsForm.get(field.key)?.touched"
+          />
+
+          <!-- Textarea (optional support) -->
+          <textarea
+            *ngSwitchCase="'textarea'"
+            [formControlName]="field.key"
+            [attr.disabled]="!field.editable ? true : null"
+            [class.invalid]="userDetailsForm.get(field.key)?.invalid && userDetailsForm.get(field.key)?.touched"
+          ></textarea>
+
+          <!-- Validation Error -->
+          <div
+            *ngIf="userDetailsForm.get(field.key)?.invalid && userDetailsForm.get(field.key)?.touched"
+            class="error-msg"
+          >
+            {{ field.label }} is required or invalid.
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <!-- Alert Messages -->
+    <div *ngIf="errorMessage" class="alert error">{{ errorMessage }}</div>
+    <div *ngIf="successMessage" class="alert success">{{ successMessage }}</div>
+
+    <!-- Action Buttons -->
+    <div class="form-actions">
+      <button
+        type="submit"
+        [disabled]="userDetailsForm.invalid || loading"
+        class="submit-button"
+      >
+        <span *ngIf="loading" class="spinner"></span>
+        {{ loading ? (isEditing ? 'Updating...' : 'Saving...') : (isEditing ? 'Update' : 'Submit Details') }}
+      </button>
+
+      <button
+        type="button"
+        class="cancel-button"
+        *ngIf="isEditing"
+        (click)="cancelEdit()"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

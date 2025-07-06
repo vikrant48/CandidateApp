@@ -1,4 +1,3 @@
-// components/navbar/navbar.component.ts
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
@@ -9,9 +8,11 @@ import { AuthService } from '../../services/auth.service';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+  styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+  showDropdown = false;
+
   constructor(
     public authService: AuthService,
     private router: Router
@@ -21,4 +22,13 @@ export class NavbarComponent {
     this.authService.logout();
     this.router.navigate(['/']);
   }
+
+  toggleDropdown(): void {
+    this.showDropdown = !this.showDropdown;
+  }
+
+  closeDropdown(): void {
+    this.showDropdown = false;
+  }
 }
+

@@ -1,0 +1,24 @@
+.page-layout {
+  display: flex;
+  flex-direction: row;     /* Important for side-by-side */
+  height: calc(100vh - 64px); /* Assuming navbar is 64px */
+  width: 100vw;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 10vw;
+  background-color: #91aff0;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.inner-layout {
+  width: 80vw;
+  padding: 20px;
+  background-color: #fff;
+  overflow-y: auto;
+}

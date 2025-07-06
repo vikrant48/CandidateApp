@@ -1,0 +1,95 @@
+.current-user-container {
+  width: 100%;
+  max-width: 100%;
+  padding: 40px 24px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.current-user-container h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #1e3a8a;
+  margin-bottom: 24px;
+}
+
+.detail-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+  font-size: 1rem;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.detail-table th,
+.detail-table td {
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.detail-table th {
+  background-color: #f3f4f6;
+  color: #374151;
+  font-weight: 600;
+  width: 30%;
+}
+
+.detail-table tr:last-child td {
+  border-bottom: none;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.action-buttons button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-weight: 600;
+  color: white;
+}
+
+.action-buttons button:first-child {
+  background-color: #2563eb;
+}
+
+.action-buttons button:first-child:hover {
+  background-color: #1e40af;
+}
+
+.action-buttons button:last-child {
+  background-color: #ef4444;
+}
+
+.action-buttons button:last-child:hover {
+  background-color: #dc2626;
+}
+
+.error-message {
+  margin-top: 16px;
+  color: #b91c1c;
+  background-color: #fee2e2;
+  border: 1px solid #fca5a5;
+  padding: 12px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+p {
+  text-align: center;
+  font-size: 1rem;
+  color: #6b7280;
+}

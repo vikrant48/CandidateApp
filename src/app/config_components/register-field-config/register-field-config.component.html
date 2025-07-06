@@ -1,0 +1,17 @@
+<h2>Field Configuration Panel</h2>
+<table>
+  <tr>
+    <th>Label</th>
+    <th>Visible</th>
+    <th>Editable</th>
+    <th>Required</th>
+  </tr>
+  <tr *ngFor="let field of fieldConfigs">
+    <td>{{ field.label }}</td>
+    <td><input type="checkbox" [(ngModel)]="field.visible" /></td>
+    <td><input type="checkbox" [(ngModel)]="field.editable" /></td>
+    <td><input type="checkbox" [(ngModel)]="field.required" /></td>
+  </tr>
+</table>
+
+<button (click)="saveChanges()">Save Configuration</button>

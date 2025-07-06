@@ -66,4 +66,10 @@ export class AuthService {
   getCurrentUser(): JwtResponse | null {
     return this.currentUserSubject.value;
   }
+
+  getCurrentUserId(): number | null {
+  const currentUser = this.getCurrentUser();
+  return currentUser?.id ?? null;
+}
+
 }

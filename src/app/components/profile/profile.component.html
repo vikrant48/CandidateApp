@@ -29,23 +29,13 @@
       </div>
 
       <div class="field">
-        <label>Age</label>
-        <p>{{ user.age || 'Not specified' }}</p>
-      </div>
-
-      <div class="field">
         <label>Mobile Number</label>
         <p>{{ user.mobileNumber || 'Not specified' }}</p>
       </div>
 
       <div class="field">
-        <label>Country</label>
-        <p>{{ user.country || 'Not specified' }}</p>
-      </div>
-
-      <div class="field">
-        <label>Gender</label>
-        <p>{{ user.gender || 'Not specified' }}</p>
+        <label>Role</label>
+        <p>{{ user.role }}</p>
       </div>
 
       <div class="field">
@@ -69,8 +59,8 @@
         </div>
 
         <div class="field">
-          <label>Age</label>
-          <input type="number" formControlName="age" class="input" />
+          <label>Email</label>
+          <input type="email" formControlName="email" class="input" />
         </div>
 
         <div class="field">
@@ -78,18 +68,12 @@
           <input type="tel" formControlName="mobileNumber" class="input" />
         </div>
 
-        <div class="field">
-          <label>Country</label>
-          <input type="text" formControlName="country" class="input" />
-        </div>
-
         <div class="field field-wide">
-          <label>Gender</label>
-          <select formControlName="gender" class="input">
-            <option value="">Select Gender</option>
-            <option value="MALE">Male</option>
-            <option value="FEMALE">Female</option>
-            <option value="OTHER">Other</option>
+          <label>Role</label>
+          <select formControlName="role" class="input">
+            <option value="">Select Role</option>
+            <option value="USER">User</option>
+            <option value="ADMIN">Admin</option>
           </select>
         </div>
       </div>

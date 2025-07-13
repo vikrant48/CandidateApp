@@ -42,13 +42,32 @@
             [class.invalid]="userDetailsForm.get(field.key)?.invalid && userDetailsForm.get(field.key)?.touched"
           />
 
-          <!-- Textarea (optional support) -->
+          <!-- Textarea -->
           <textarea
             *ngSwitchCase="'textarea'"
             [formControlName]="field.key"
             [attr.disabled]="!field.editable ? true : null"
             [class.invalid]="userDetailsForm.get(field.key)?.invalid && userDetailsForm.get(field.key)?.touched"
           ></textarea>
+
+          <!-- Date Picker -->
+          <input
+            *ngSwitchCase="'date'"
+            type="date"
+            [formControlName]="field.key"
+            [attr.disabled]="!field.editable ? true : null"
+            [class.invalid]="userDetailsForm.get(field.key)?.invalid && userDetailsForm.get(field.key)?.touched"
+          />
+
+          <!-- Dropdowns -->
+          <select
+            *ngSwitchCase="'select'"
+            [formControlName]="field.key"
+            [attr.disabled]="!field.editable ? true : null"
+          >
+            <option value="">Select {{ field.label }}</option>
+            <option *ngFor="let opt of getOptions(field.key)" [value]="opt">{{ opt }}</option>
+          </select>
 
           <!-- Validation Error -->
           <div
@@ -59,13 +78,24 @@
           </div>
         </div>
       </ng-container>
+
+      <!-- Read-only values from User entity -->
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" [value]="linkedUserEmail" disabled />
+      </div>
+
+      <div class="form-group">
+        <label>Mobile Number</label>
+        <input type="tel" [value]="linkedUserMobile" disabled />
+      </div>
     </div>
 
-    <!-- Alert Messages -->
+    <!-- Alerts -->
     <div *ngIf="errorMessage" class="alert error">{{ errorMessage }}</div>
     <div *ngIf="successMessage" class="alert success">{{ successMessage }}</div>
 
-    <!-- Action Buttons -->
+    <!-- Buttons -->
     <div class="form-actions">
       <button
         type="submit"

@@ -5,10 +5,7 @@ export interface User {
   email: string;
   password?: string;
   role: Role;
-  age?: number;
   mobileNumber?: string;
-  country?: string;
-  gender?: Gender;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -18,15 +15,10 @@ export enum Role {
   USER = 'USER'
 }
 
-export enum Gender {
-  MALE = 'MALE',
-  FEMALE = 'FEMALE',
-  OTHER = 'OTHER'
-}
-
 export interface LoginRequest {
-  username: string;
+  usernameOrEmail: string;
   password: string;
+  role: Role;
 }
 
 export interface SignupRequest {
@@ -35,17 +27,16 @@ export interface SignupRequest {
   email: string;
   password: string;
   role: Role;
-  age?: number;
   mobileNumber?: string;
-  country?: string;
-  gender?: Gender;
 }
-
+ 
 export interface JwtResponse {
   token: string;
+  type: string;
   id: number;
   username: string;
   email: string;
+  roles: Role[];
 }
 
 export interface MessageResponse {
@@ -59,10 +50,7 @@ export interface UserResponse {
   email: string;
   password: string;
   role: Role;
-  age?: number;
   mobileNumber?: string;
-  country?: string;
-  gender?: Gender;
   createdAt: Date;
   updatedAt: Date;
 }

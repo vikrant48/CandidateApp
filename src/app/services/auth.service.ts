@@ -68,8 +68,13 @@ export class AuthService {
   }
 
   getCurrentUserId(): number | null {
-  const currentUser = this.getCurrentUser();
-  return currentUser?.id ?? null;
-}
+    const currentUser = this.getCurrentUser();
+    return currentUser?.id ?? null;
+  }
+
+  getCurrentUserRole(): string | null {
+    const user = this.getCurrentUser();
+    return user?.roles?.[0] ?? null;
+  }
 
 }

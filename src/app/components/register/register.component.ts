@@ -133,9 +133,8 @@ export class RegisterComponent implements OnInit {
         case 'mobileNumber':
           validators.push(Validators.maxLength(15));
           break;
-        case 'country':
-          validators.push(Validators.maxLength(50));
-          break;
+        case 'role':
+          validators.push(Validators.required);
       }
 
       this.registerForm.addControl(

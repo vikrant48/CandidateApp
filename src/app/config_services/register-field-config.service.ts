@@ -18,10 +18,8 @@ export class FieldConfigService {
     { key: 'email', label: 'Email', type: 'email', required: true, editable: true, visible: true },
     { key: 'password', label: 'Password', type: 'password', required: true, editable: true, visible: true },
     { key: 'role', label: 'Role', type: 'select_role', required: true, editable: true, visible: true },
-    { key: 'age', label: 'Age', type: 'number', required: false, editable: true, visible: true },
     { key: 'mobileNumber', label: 'Mobile Number', type: 'tel', required: false, editable: true, visible: true },
-    { key: 'country', label: 'Country', type: 'text', required: false, editable: true, visible: true },
-    { key: 'gender', label: 'Gender', type: 'select_gender', required: false, editable: true, visible: true }
+
   ];
 
   private configSubject = new BehaviorSubject<FieldConfig[]>(this.defaultConfig);

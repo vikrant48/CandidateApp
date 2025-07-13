@@ -140,7 +140,7 @@
             [class.invalid]="registerForm.get(field.key)?.invalid && registerForm.get(field.key)?.touched"
           />
 
-          <select
+          <!-- <select
             *ngSwitchCase="'select_gender'"
             [formControlName]="field.key"
             [attr.disabled]="!field.editable ? true : null"
@@ -150,7 +150,7 @@
             <option value="MALE">Male</option>
             <option value="FEMALE">Female</option>
             <option value="OTHER">Other</option>
-          </select>
+          </select> -->
 
           <div *ngIf="registerForm.get(field.key)?.invalid && registerForm.get(field.key)?.touched" class="error-msg">
             {{ field.label }} is invalid or required.

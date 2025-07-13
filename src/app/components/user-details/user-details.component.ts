@@ -25,6 +25,14 @@ export class UserDetailComponent implements OnInit {
   isEditing = false;
   currentUserId: number | null = null;
 
+  // Dropdown values
+  genderOptions = ['MALE', 'FEMALE', 'OTHER'];
+  bloodGroups = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
+
+  // From User entity (read-only)
+  linkedUserEmail = '';
+  linkedUserMobile = '';
+
   constructor(
     private fb: FormBuilder,
     private userDetailsService: UserDetailsService,
@@ -62,9 +70,6 @@ export class UserDetailComponent implements OnInit {
         case 'aadhaarNumber':
           validators.push(Validators.maxLength(12));
           break;
-        case 'resumePath':
-          validators.push(Validators.maxLength(255));
-          break;
       }
 
       group[field.key] = this.fb.control({ value: '', disabled: !field.editable }, validators);
@@ -82,16 +87,32 @@ export class UserDetailComponent implements OnInit {
     }
 
     this.userDetailsService.getUserDetailById(userId).subscribe({
-      next: (user: UserDetail) => {
-        this.userDetailsForm.patchValue(user);
+      next: (user: any) => {
         this.currentUserId = user.id!;
         this.isEditing = true;
+
+        this.userDetailsForm.patchValue(user);
+
+        // Extract email & mobile from linked user object
+        if (user.user) {
+          this.linkedUserEmail = user.user.email || '';
+          this.linkedUserMobile = user.user.mobileNumber || '';
+        } else {
+          this.linkedUserEmail = user.email || '';
+          this.linkedUserMobile = user.mobileNumber || '';
+        }
       },
       error: () => {
         console.log('No user detail found. Switching to create mode.');
         this.isEditing = false;
       }
     });
+  }
+
+  getOptions(key: string): string[] {
+    if (key === 'gender') return this.genderOptions;
+    if (key === 'bloodGroup') return this.bloodGroups;
+    return [];
   }
 
   onSubmit(): void {
@@ -103,6 +124,7 @@ export class UserDetailComponent implements OnInit {
 
     const formData = this.userDetailsForm.getRawValue();
 
+    // Remove null/empty fields
     Object.keys(formData).forEach(key => {
       if (formData[key] === '' || formData[key] === null) {
         delete formData[key];

@@ -27,10 +27,9 @@ export class ProfileComponent implements OnInit {
   ) {
     this.profileForm = this.fb.group({
       name: ['', Validators.maxLength(100)],
-      age: [''],
+      email: ['', [Validators.email, Validators.maxLength(100)]],
       mobileNumber: ['', Validators.maxLength(15)],
-      country: ['', Validators.maxLength(50)],
-      gender: ['']
+      role : ['', Validators.required],
     });
   }
 
@@ -56,10 +55,9 @@ export class ProfileComponent implements OnInit {
     if (this.user) {
       this.profileForm.patchValue({
         name: this.user.name,
-        age: this.user.age,
         mobileNumber: this.user.mobileNumber,
-        country: this.user.country,
-        gender: this.user.gender
+        role: this.user.role,
+        email: this.user.email
       });
       this.editMode = true;
       this.errorMessage = '';

@@ -22,11 +22,11 @@ export class UserDetailsService {
   }
 
   private getCurrentUserIdFromToken(): number | null {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('currentUser');
     if (!token) return null;
 
     try {
-      const decoded: any = jwtDecode(token);
+      const decoded: any = JSON.parse(token);
       return decoded.id || null;
     } catch (error) {
       console.error('Invalid token', error);
@@ -46,6 +46,8 @@ export class UserDetailsService {
   createUserDetail(data: UserDetail): Observable<UserDetail> {
     const userId = this.getCurrentUserIdFromToken();
     if (userId === null) throw new Error('User ID not found in token');
+    console.log('Submitting user detail:', data);
+    console.log('User ID from token:', this.getCurrentUserIdFromToken());
 
     return this.http.post<UserDetail>(`${this.API_URL}/${userId}`, data, { headers: this.getAuthHeaders() });
   }

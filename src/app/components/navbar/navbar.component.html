@@ -1,84 +1,81 @@
-
-<!-- <nav class="navbar">
-  <div class="navbar-container">
-    <div class="navbar-content">
-      <div class="navbar-brand">
-        <a routerLink="/" class="brand-text">UserApp</a>
-      </div>
-
-      <div class="navbar-links">
-        <ng-container *ngIf="authService.currentUser$ | async as user; else loginLinks">
-          <span class="welcome-text">Welcome, {{ user.username }}</span>
-          <a routerLink="/profile" 
-             class="nav-link"
-             routerLinkActive="active-link">
-            Profile
-          </a>
-          <a routerLink="/users" 
-             class="nav-link"
-             routerLinkActive="active-link">
-            Users
-          </a>
-          <button (click)="logout()" class="logout-button">
-            Logout
-          </button>
-        </ng-container>
-
-        <ng-template #loginLinks>
-          <a routerLink="/login" 
-             class="nav-link"
-             routerLinkActive="active-link">
-            Login
-          </a>
-          <a routerLink="/register" 
-             class="register-button"
-             routerLinkActive="register-active">
-            Register
-          </a>
-        </ng-template>
-      </div>
-    </div>
-  </div>
-</nav> -->
-
 <nav class="navbar">
   <div class="navbar-container">
     <div class="navbar-content">
-      
       <!-- Brand -->
       <div class="navbar-brand">
         <a routerLink="/" class="brand-text">UserApp</a>
       </div>
 
       <!-- Config Dropdown (always visible, click to toggle) -->
-      <div class="dropdown">
-        <button class="nav-link config-btn" (click)="toggleDropdown()">⚙️ Config</button>
+      <div *ngIf="authService.getCurrentUserRole() === 'ROLE_ADMIN'" class="dropdown">
+        <button class="nav-link config-btn" (click)="toggleDropdown()">
+          ⚙️ Config
+        </button>
         <div class="dropdown-content" *ngIf="showDropdown">
-          <a routerLink="/register_config" routerLinkActive="active-link" (click)="closeDropdown()">Register Config</a>
+          <a
+            routerLink="/register_config"
+            routerLinkActive="active-link"
+            (click)="closeDropdown()"
+            >Register Config</a
+          >
           <!-- Add more config links here if needed -->
         </div>
       </div>
 
       <!-- Authenticated/Unauthenticated User Links -->
       <div class="navbar-links">
-        <ng-container *ngIf="authService.currentUser$ | async as user; else loginLinks">
+        <ng-container
+          *ngIf="authService.currentUser$ | async as user; else loginLinks"
+        >
           <span class="welcome-text">Welcome, {{ user.username }}</span>
 
-          <a routerLink="/profile" class="nav-link" routerLinkActive="active-link">Profile</a>
-          <!-- <a routerLink="/users" class="nav-link" routerLinkActive="active-link">Users</a> -->
-          <a routerLink="/userdetails" class="nav-link" routerLinkActive="active-link">UserDetails</a>
-          <!-- <a routerLink="/my-details" class="nav-link" routerLinkActive="active-link">My Details</a> -->
+          <a
+            routerLink="/profile"
+            class="nav-link"
+            routerLinkActive="active-link"
+            >Profile</a
+          >
 
+          <a routerLink="/chat" class="nav-link" routerLinkActive="active-link">talk to me</a>
+          
+          <!-- <a routerLink="/users" class="nav-link" routerLinkActive="active-link">Users</a> -->
+          <a
+            routerLink="/userdetails"
+            class="nav-link"
+            routerLinkActive="active-link"
+            >UserDetails</a
+          >
+          <a
+            routerLink="/my-details"
+            class="nav-link"
+            routerLinkActive="active-link"
+            >My Details</a
+          >
+
+          <!-- ✅ Admin Panel button only for admin -->
+          <button
+            *ngIf="authService.getCurrentUserRole() === 'ROLE_ADMIN'"
+            routerLink="/admin"
+            class="nav-link admin-button"
+          >
+            Admin Panel
+          </button>
 
           <button (click)="logout()" class="logout-button">Logout</button>
         </ng-container>
 
         <ng-template #loginLinks>
-          <a routerLink="/login" class="nav-link" routerLinkActive="active-link">Login</a>
-          <a routerLink="/register" class="register-button" routerLinkActive="register-active">Register</a>
+          <a routerLink="/login" class="nav-link" routerLinkActive="active-link"
+            >Login</a
+          >
+          <a
+            routerLink="/register"
+            class="register-button"
+            routerLinkActive="register-active"
+            >Register</a
+          >
         </ng-template>
       </div>
     </div>
   </div>
 </nav>
-

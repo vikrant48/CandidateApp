@@ -1,3 +1,4 @@
+import { UserDetail } from "./userDetails.model";
 export interface User {
   id?: number;
   username: string;
@@ -53,4 +54,9 @@ export interface UserResponse {
   mobileNumber?: string;
   createdAt: Date;
   updatedAt: Date;
+}
+
+export interface UserAdminView {
+  user: UserResponse;
+  userDetail: UserDetail | null;
 }

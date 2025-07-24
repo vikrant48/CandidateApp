@@ -51,6 +51,7 @@
           ></textarea>
 
           <!-- Date Picker -->
+
           <input
             *ngSwitchCase="'date'"
             type="date"
@@ -78,17 +79,6 @@
           </div>
         </div>
       </ng-container>
-
-      <!-- Read-only values from User entity -->
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" [value]="linkedUserEmail" disabled />
-      </div>
-
-      <div class="form-group">
-        <label>Mobile Number</label>
-        <input type="tel" [value]="linkedUserMobile" disabled />
-      </div>
     </div>
 
     <!-- Alerts -->
@@ -117,3 +107,15 @@
     </div>
   </form>
 </div>
+
+<!-- <mat-form-field appearance="outline" class="full-width" *ngSwitchCase="'date'">
+            <mat-label>{{ field.label || field.key | titlecase }}</mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker"
+                [formControlName]="field.key"
+                [disabled]="!field.editable"
+              />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field> -->

@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { UserResponse } from '../../models/user.model';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
@@ -26,6 +27,7 @@ export class ProfileComponent implements OnInit {
     private fb: FormBuilder
   ) {
     this.profileForm = this.fb.group({
+      username: [{ value: '', disabled: true }],
       name: ['', Validators.maxLength(100)],
       email: ['', [Validators.email, Validators.maxLength(100)]],
       mobileNumber: ['', Validators.maxLength(15)],
@@ -54,6 +56,7 @@ export class ProfileComponent implements OnInit {
   enterEditMode(): void {
     if (this.user) {
       this.profileForm.patchValue({
+        username: this.user.username,
         name: this.user.name,
         mobileNumber: this.user.mobileNumber,
         role: this.user.role,

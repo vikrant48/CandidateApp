@@ -1,0 +1,48 @@
+<h2>Admin - User Management</h2>
+
+<div *ngIf="loading">Loading users...</div>
+<div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+<div *ngIf="!loading && users.length === 0">No users found.</div>
+
+<div class="cards-container">
+  <div *ngFor="let user of users" class="user-card">
+    <h3>{{ user.user.name }} ({{ user.user.username }})</h3>
+    <p><strong>Email:</strong> {{ user.user.email }}</p>
+    <p><strong>Role:</strong> {{ user.user.role }}</p>
+    <p><strong>Status:</strong> {{ user.userDetail?.isActive ? 'Active' : 'Inactive' }}</p>
+
+    <hr />
+
+    <p><strong>First Name:</strong> {{ user.userDetail?.firstName }}</p>
+    <p><strong>Last Name:</strong> {{ user.userDetail?.lastName }}</p>
+    <p><strong>Age:</strong> {{ user.userDetail?.age }}</p>
+    <p><strong>Gender:</strong> {{ user.userDetail?.gender }}</p>
+    <p><strong>DOB:</strong> {{ user.userDetail?.dob }}</p>
+    <p><strong>Mobile:</strong> {{ user.userDetail?.mobileNumber }}</p>
+    <p><strong>Alternate Mobile:</strong> {{ user.userDetail?.alternateMobileNumber }}</p>
+    <p><strong>Alternate Email:</strong> {{ user.userDetail?.alternateEmail }}</p>
+    <p><strong>Aadhaar:</strong> {{ user.userDetail?.aadhaarNumber }}</p>
+    <p><strong>PAN:</strong> {{ user.userDetail?.panNumber }}</p>
+    <p><strong>Address:</strong> {{ user.userDetail?.address }}, {{ user.userDetail?.country }}</p>
+    <p><strong>Blood Group:</strong> {{ user.userDetail?.bloodGroup }}</p>
+    <p><strong>Emergency Contact:</strong> {{ user.userDetail?.emergencyContactName }} ({{ user.userDetail?.emergencyContactRelation }}) - {{ user.userDetail?.emergencyContactNumber }}</p>
+
+    <div class="actions">
+      <button 
+        *ngIf="!user.userDetail?.isActive" 
+        (click)="activate(user.user.id)">
+        Activate
+      </button>
+
+      <button 
+        *ngIf="user.userDetail?.isActive" 
+        (click)="deactivate(user.user.id)">
+        Deactivate
+      </button>
+    </div>
+  </div>
+</div>
+<div class="back-button">
+  <button (click)="backToDashboard()">Back to Dashboard</button>
+</div>

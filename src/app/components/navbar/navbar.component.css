@@ -64,6 +64,16 @@
   background-color: #1e40af;
 }
 
+.admin-button {
+  background-color: #f59e0b; /* amber-500 */
+  color: white;
+  border: none;
+}
+
+.admin-button:hover {
+  background-color: #d97706; /* amber-600 */
+}
+
 .register-button {
   background-color: #22c55e;
   color: white;

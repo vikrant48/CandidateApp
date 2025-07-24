@@ -15,6 +15,7 @@ import { UserDetail } from '../../models/userDetails.model';
 export class CurrentUserDetailsComponent implements OnInit {
   userDetail: UserDetail | null = null;
   errorMessage = '';
+  loading = true;
 
   constructor(
     private userDetailsService: UserDetailsService,
@@ -24,27 +25,53 @@ export class CurrentUserDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const userId = this.authService.getCurrentUserId();
-    if (userId) {
+    if (userId !== null) {
       this.userDetailsService.getUserDetailById(userId).subscribe({
-        next: (data) => this.userDetail = data,
-        error: () => this.errorMessage = 'Failed to load your details.'
+        next: (data) => {
+          this.userDetail = data;
+          this.loading = false;
+        },
+        error: (err) => {
+          console.error('Failed to load user detail:', err);
+          this.errorMessage = 'Failed to load your details.';
+          this.loading = false;
+        }
       });
+    } else {
+      this.errorMessage = 'User ID not found. Please log in again.';
+      this.loading = false;
     }
   }
 
+  printPage(): void {
+    const printContents = document.getElementById('print-section')?.innerHTML;
+    const originalContents = document.body.innerHTML;
+
+    if (printContents) {
+      document.body.innerHTML = printContents;
+      window.print();
+      document.body.innerHTML = originalContents;
+      window.location.reload(); // reloads the full app back after printing
+    }
+  }
+
+
   edit(): void {
-    this.router.navigate(['/userdetails']); // assumes your edit form route is /user-detail
+    this.router.navigate(['/userdetails']);
   }
 
   delete(): void {
+    if (!this.userDetail?.id) return;
+
     const confirmDelete = confirm('Are you sure you want to delete your details?');
-    if (confirmDelete && this.userDetail?.id) {
+    if (confirmDelete) {
       this.userDetailsService.deleteUserDetail(this.userDetail.id).subscribe({
         next: () => {
-          this.userDetail = null;
           alert('Your details were deleted.');
+          this.userDetail = null;
         },
-        error: () => {
+        error: (err) => {
+          console.error('Delete failed:', err);
           this.errorMessage = 'Failed to delete your details.';
         }
       });

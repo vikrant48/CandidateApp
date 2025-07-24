@@ -1,0 +1,16 @@
+<div class="chat-container">
+  <form [formGroup]="chatForm" (ngSubmit)="onSubmit()">
+    <label for="message">Ask AI:</label>
+    <textarea formControlName="message" id="message" rows="4" placeholder="Type your question..."></textarea>
+    <button type="submit" [disabled]="chatForm.invalid || isLoading">
+      {{ isLoading ? 'Sending...' : 'Send' }}
+    </button>
+  </form>
+
+  <div class="response" *ngIf="responseMessage">
+    <h4>AI Response:</h4>
+    <p>{{ responseMessage }}</p>
+  </div>
+
+  <div class="error" *ngIf="errorMessage">{{ errorMessage }}</div>
+</div>

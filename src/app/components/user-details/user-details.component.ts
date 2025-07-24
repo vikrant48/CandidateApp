@@ -7,11 +7,18 @@ import { UserDetailsService } from '../../services/user-details.service';
 import { FieldConfigService, FieldConfig } from '../../config_services/userdetails-field-config.service';
 import { UserDetail } from '../../models/userDetails.model';
 import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
+
+// Angular Material Modules
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-user-detail',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatNativeDateModule],
   templateUrl: './user-details.component.html',
   styleUrl: './user-details.component.css'
 })
@@ -38,6 +45,7 @@ export class UserDetailComponent implements OnInit {
     private userDetailsService: UserDetailsService,
     private configService: FieldConfigService,
     private authService: AuthService,
+    private userService: UserService,
     private router: Router
   ) {}
 
@@ -45,7 +53,7 @@ export class UserDetailComponent implements OnInit {
     this.configService.config$.subscribe(config => {
       this.fieldConfig = config;
       this.buildForm();
-      this.loadCurrentUserDetail();
+      this.loadCurrentUserDetail(); 
     });
   }
 

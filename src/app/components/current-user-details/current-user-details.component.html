@@ -1,16 +1,37 @@
-<div class="current-user-container" *ngIf="userDetail; else noData">
-  <h2>Your Details</h2>
+<div id="print-section" class="current-user-container" *ngIf="userDetail; else noData">
+  <h2>Your Profile</h2>
 
-  <table class="detail-table">
-    <tr><th>Full Name</th><td>{{ userDetail.firstName }} {{ userDetail.lastName }}</td></tr>
-    <tr><th>Email</th><td>{{ userDetail.email }}</td></tr>
-    <tr><th>Mobile</th><td>{{ userDetail.mobileNumber }}</td></tr>
-    <tr><th>DOB</th><td>{{ userDetail.dob }}</td></tr>
-    <tr><th>Address</th><td>{{ userDetail.address }}</td></tr>
-    <tr><th>PAN</th><td>{{ userDetail.panNumber }}</td></tr>
-    <tr><th>Aadhaar</th><td>{{ userDetail.aadhaarNumber }}</td></tr>
-    <tr><th>Resume</th><td>{{ userDetail.resumePath }}</td></tr>
-  </table>
+  
+  <div class="print-icon-container">
+    <button class="print-btn" (click)="printPage()" title="Print">
+      🖨️ Print
+    </button>
+  </div>
+
+  <div class="profile-card">
+    <div class="profile-row" *ngFor="let item of [
+      { label: 'Full Name', value: userDetail.firstName + ' ' + userDetail.lastName },
+      { label: 'Email', value: userDetail.email },
+      { label: 'Alternate Email', value: userDetail.alternateEmail },
+      { label: 'Mobile', value: userDetail.mobileNumber },
+      { label: 'Alternate Mobile', value: userDetail.alternateMobileNumber },
+      { label: 'Date of Birth', value: userDetail.dob },
+      { label: 'Age', value: userDetail.age },
+      { label: 'Gender', value: userDetail.gender },
+      { label: 'Address', value: userDetail.address },
+      { label: 'Country ', value: userDetail.country },
+      { label: 'PAN Number', value: userDetail.panNumber },
+      { label: 'Aadhaar Number', value: userDetail.aadhaarNumber },
+      { label: 'Blood Group', value: userDetail.bloodGroup },
+      { label: 'Emergency Contact Name', value: userDetail.emergencyContactName },
+      { label: 'Emergency Contact Number', value: userDetail.emergencyContactNumber },
+      { label: 'Emergency Contact Relation', value: userDetail.emergencyContactRelation },
+      { label: 'Is Active', value: userDetail.isActive ? 'Yes' : 'No' }
+    ]">
+      <div class="label">{{ item.label }}</div>
+      <div class="value">{{ item.value || '—' }}</div>
+    </div>
+  </div>
 
   <div class="action-buttons">
     <button (click)="edit()">Edit</button>
@@ -19,7 +40,7 @@
 </div>
 
 <ng-template #noData>
-  <p>No details found. Please fill your details first.</p>
+  <p class="no-data">No details found. Please fill in your profile.</p>
 </ng-template>
 
 <div *ngIf="errorMessage" class="error-message">

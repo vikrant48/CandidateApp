@@ -9,7 +9,10 @@
   <div *ngIf="!loading && !editMode" class="card">
     <div class="card-header">
       <h3>Profile Information</h3>
-      <button (click)="enterEditMode()" class="btn btn-primary">Edit Profile</button>
+      <div class="button-group">
+        <button (click)="enterEditMode()" class="btn btn-primary">Edit Profile</button>
+        <button type="button" class="btn btn-accent" [routerLink]="['/userdetails']">Fill/Edit User Details</button>
+      </div>
     </div>
 
     <div class="profile-grid" *ngIf="user">
@@ -30,7 +33,7 @@
 
       <div class="field">
         <label>Mobile Number</label>
-        <p>{{ user.mobileNumber || 'Not specified' }}</p>
+        <p>{{ user.mobileNumber || "Not specified" }}</p>
       </div>
 
       <div class="field">
@@ -40,7 +43,7 @@
 
       <div class="field">
         <label>Member Since</label>
-        <p>{{ user.createdAt | date:'medium' }}</p>
+        <p>{{ user.createdAt | date : "medium" }}</p>
       </div>
     </div>
   </div>
@@ -53,6 +56,12 @@
 
     <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
       <div class="profile-grid">
+
+        <div class="field">
+          <label>Username</label>
+          <input type="text" formControlName="username" class="input" readonly/>
+        </div>
+
         <div class="field">
           <label>Full Name</label>
           <input type="text" formControlName="name" class="input" />
@@ -60,7 +69,7 @@
 
         <div class="field">
           <label>Email</label>
-          <input type="email" formControlName="email" class="input" />
+          <input type="email" formControlName="email" class="input" readonly />
         </div>
 
         <div class="field">
@@ -86,12 +95,14 @@
         {{ successMessage }}
       </div>
 
-      <button type="submit" [disabled]="updating" class="btn btn-success full-width">
+      <button
+        type="submit"
+        [disabled]="updating"
+        class="btn btn-success full-width"
+      >
         <span *ngIf="updating" class="spinner small"></span>
-        {{ updating ? 'Updating...' : 'Update Profile' }}
+        {{ updating ? "Updating..." : "Update Profile" }}
       </button>
     </form>
   </div>
 </div>
-
-

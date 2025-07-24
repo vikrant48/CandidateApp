@@ -4,24 +4,49 @@
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label class="form-label">Username</label>
-      <input 
-        type="text" 
+      <input
+        type="text"
         formControlName="usernameOrEmail"
         class="form-input"
-        [class.input-error]="loginForm.get('usernameOrEmail')?.invalid && loginForm.get('usernameOrEmail')?.touched">
-      <div *ngIf="loginForm.get('usernameOrEmail')?.invalid && loginForm.get('usernameOrEmail')?.touched" class="error-text">
+        [class.input-error]="
+          loginForm.get('usernameOrEmail')?.invalid &&
+          loginForm.get('usernameOrEmail')?.touched
+        "
+      />
+      <div
+        *ngIf="
+          loginForm.get('usernameOrEmail')?.invalid &&
+          loginForm.get('usernameOrEmail')?.touched
+        "
+        class="error-text"
+      >
         Username is required
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group password-group">
       <label class="form-label">Password</label>
-      <input 
-        type="password" 
-        formControlName="password"
-        class="form-input"
-        [class.input-error]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-      <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error-text">
+      <div class="password-wrapper">
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          formControlName="password"
+          class="form-input password-input"
+          [class.input-error]="
+            loginForm.get('password')?.invalid &&
+            loginForm.get('password')?.touched
+          "
+        />
+        <span class="eye-icon" (click)="togglePasswordVisibility()">
+          {{ showPassword ? "🙈" : "👁️" }}
+        </span>
+      </div>
+      <div
+        *ngIf="
+          loginForm.get('password')?.invalid &&
+          loginForm.get('password')?.touched
+        "
+        class="error-text"
+      >
         Password is required
       </div>
     </div>
@@ -33,7 +58,10 @@
         <option value="USER">User</option>
         <option value="ADMIN">Admin</option>
       </select>
-      <div *ngIf="loginForm.get('role')?.invalid && loginForm.get('role')?.touched" class="error-text">
+      <div
+        *ngIf="loginForm.get('role')?.invalid && loginForm.get('role')?.touched"
+        class="error-text"
+      >
         Role is required
       </div>
     </div>
@@ -42,18 +70,19 @@
       {{ errorMessage }}
     </div>
 
-    <button 
-      type="submit" 
+    <button
+      type="submit"
       [disabled]="loginForm.invalid || loading"
-      class="submit-btn">
+      class="submit-btn"
+    >
       <span *ngIf="loading" class="loading-spinner"></span>
-      {{ loading ? 'Logging in...' : 'Login' }}
+      {{ loading ? "Logging in..." : "Login" }}
     </button>
   </form>
 
   <div class="register-redirect">
     <p>
-      Don't have an account? 
+      Don't have an account?
       <a routerLink="/register" class="link">Register here</a>
     </p>
   </div>
